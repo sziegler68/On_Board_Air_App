@@ -434,3 +434,119 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.btn-demo:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 500px),
+(max-height: 800px) {
+    body {
+        padding: 5px;
+    }
+
+    .hud-wrapper {
+        align-self: flex-start;
+        margin-top: 10px;
+    }
+
+    .hud-outer-frame {
+        border-width: 2px;
+        box-shadow: 0 0 0 2px #9ca3af, inset 0 0 0 2px var(--orange), inset 0 0 10px rgba(0, 243, 255, 0.1);
+        border-radius: 15px;
+        padding: 8px;
+    }
+
+    .hud-inner-frame {
+        gap: 15px;
+    }
+
+    .top-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .gauge-panel {
+        width: 140px;
+        height: 140px;
+    }
+
+    .analog-gauge-svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .gauge-label {
+        bottom: 5px;
+        font-size: 0.8rem;
+    }
+
+    .gauge-metal-base {
+        width: 100px;
+        height: 25px;
+        bottom: -10px;
+    }
+
+    .base-text {
+        font-size: 0.8rem;
+        margin-bottom: 0px;
+    }
+
+    .info-panel {
+        width: 100%;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .waveform-box {
+        height: 35px;
+    }
+
+    .progress-block {
+        gap: 5px;
+    }
+
+    .segmented-bar-container {
+        height: 12px;
+    }
+
+    .progress-text {
+        font-size: 0.9rem;
+    }
+
+    .readouts-section {
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        padding: 0;
+    }
+
+    .hex-readout {
+        width: 48%;
+        height: 50px;
+    }
+
+    .readout-label {
+        font-size: 0.65rem;
+    }
+
+    .readout-value {
+        font-size: 1.8rem;
+    }
+
+    .controls-section {
+        gap: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .hex-btn {
+        width: 70px;
+        height: 70px;
+    }
+
+    .hex-content {
+        font-size: 0.8rem;
+    }
+}

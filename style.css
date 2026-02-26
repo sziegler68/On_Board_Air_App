@@ -29,6 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    height: 100dvh;
     padding: 10px;
     overflow: hidden;
     position: relative;
@@ -54,30 +55,28 @@ body {
 .hud-wrapper {
     width: 100%;
     max-width: 600px;
+    max-height: calc(100vh - 20px);
+    max-height: calc(100dvh - 20px);
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .hud-outer-frame {
-    background: linear-gradient(135deg, #2a313b 0%, #0f1520 100%);
-    border: 8px solid;
-    border-image-source: linear-gradient(135deg, var(--metal-light), var(--metal-dark));
-    border-image-slice: 1;
-    border-radius: 40px;
-    /* Note: border-image disables border-radius, using hack below */
-    padding: 15px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 243, 255, 0.1);
-
-    /* Rounded corners hack for gradients */
     background: #0f1520;
     box-shadow: 0 0 0 8px #9ca3af, inset 0 0 0 2px var(--orange), inset 0 0 30px rgba(0, 243, 255, 0.1);
     border-radius: 40px;
     border: 4px solid #4b5563;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .hud-inner-frame {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: clamp(8px, 2vh, 30px);
     position: relative;
 }
 
@@ -86,17 +85,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: clamp(5px, 1vh, 10px);
 }
 
 /* Analog Gauge */
 .gauge-panel {
     position: relative;
-    width: 220px;
-    height: 220px;
+    width: clamp(130px, 30vw, 220px);
+    height: clamp(130px, 30vw, 220px);
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .gauge-glow-ring {
@@ -440,36 +440,37 @@ body {
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 500px),
-(max-height: 800px) {
+@media (max-width: 500px) {
     body {
         padding: 5px;
+        align-items: flex-start;
     }
 
     .hud-wrapper {
-        align-self: flex-start;
-        margin-top: 10px;
+        margin-top: 5px;
+        max-height: calc(100dvh - 10px);
     }
 
     .hud-outer-frame {
         border-width: 2px;
-        box-shadow: 0 0 0 2px #9ca3af, inset 0 0 0 2px var(--orange), inset 0 0 10px rgba(0, 243, 255, 0.1);
+        box-shadow: 0 0 0 3px #9ca3af, inset 0 0 0 1px var(--orange), inset 0 0 10px rgba(0, 243, 255, 0.1);
         border-radius: 15px;
         padding: 8px;
     }
 
     .hud-inner-frame {
-        gap: 15px;
+        gap: 8px;
     }
 
     .top-section {
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
+        padding: 5px;
     }
 
     .gauge-panel {
-        width: 140px;
-        height: 140px;
+        width: 130px;
+        height: 130px;
     }
 
     .analog-gauge-svg {
@@ -477,76 +478,83 @@ body {
         height: 120px;
     }
 
-    .gauge-label {
-        bottom: 5px;
-        font-size: 0.8rem;
-    }
-
     .gauge-metal-base {
-        width: 100px;
-        height: 25px;
-        bottom: -10px;
+        width: 90px;
+        height: 22px;
+        bottom: -8px;
     }
 
     .base-text {
-        font-size: 0.8rem;
-        margin-bottom: 0px;
+        font-size: 0.7rem;
+        margin-bottom: 0;
+    }
+
+    .base-bars .bar {
+        width: 5px;
+        height: 3px;
+    }
+
+    .gauge-label {
+        bottom: 5px;
+        font-size: 0.7rem;
     }
 
     .info-panel {
         width: 100%;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
     }
 
     .waveform-box {
-        height: 35px;
+        height: 30px;
     }
 
     .progress-block {
-        gap: 5px;
+        gap: 4px;
     }
 
     .segmented-bar-container {
-        height: 12px;
+        height: 10px;
     }
 
     .progress-text {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .readouts-section {
         flex-direction: row;
-        align-items: center;
         gap: 5px;
-        padding: 0;
+        padding: 0 5px;
     }
 
     .hex-readout {
         width: 48%;
-        height: 50px;
+        height: 45px;
     }
 
     .readout-label {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
 
     .readout-value {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .controls-section {
         gap: 10px;
-        margin-top: 5px;
-        margin-bottom: 5px;
+        margin: 3px 0;
     }
 
     .hex-btn {
-        width: 70px;
-        height: 70px;
+        width: 65px;
+        height: 65px;
     }
 
     .hex-content {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .mockup-tools {
+        display: none;
     }
 }
